@@ -188,7 +188,6 @@ dev.off()
 
   
 # feature selection trial
-fselector = fs("random_search")
 
 terminator = trm("evals", n_evals = 10)
 fselector = fs("random_search")
@@ -217,6 +216,10 @@ Accuracy <- bmr2$aggregate(msr("classif.acc"))$classif.acc
 sc <- data.frame(Accuracy,row.names = list("fselector","All Features"))
 png("fsel_acc.png", height = 50*nrow(sc), width = 200*ncol(sc))
 gridExtra::grid.table(sc)
+dev.off()
+
+png("bar_acc.png")
+barplot(c(84.27,87.5),names.arg = c("Base Prediction Model","Tuned Prediction Model"), ylim=c(0,100),xlab = "Models",ylab = "Percentage", main="Accuracies", col=rgb(0.8,0.1,0.1,0.6))
 dev.off()
 
  
